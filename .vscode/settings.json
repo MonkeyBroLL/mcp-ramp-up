@@ -1,0 +1,30 @@
+{
+    "security.workspace.trust.untrustedFiles": "open",
+    "mcp": {
+        "servers": {
+            "github": {
+                "command": "docker",
+                "args": [
+                    "run",
+                    "-i",
+                    "--rm",
+                    "-e",
+                    "GITHUB_PERSONAL_ACCESS_TOKEN",
+                    "ghcr.io/github/github-mcp-server"
+                ],
+                "env": {
+                    "GITHUB_PERSONAL_ACCESS_TOKEN": "${input:github_full_access_token}"
+                }
+            }
+        },
+        "inputs": [
+            {
+                "id": "github_full_access_token",
+                "type": "promptString",
+                "description": "GitHub Personal Access Token",
+                "password": true
+            }
+        ]
+    },
+    "chat.mcp.discovery.enabled": true
+}
